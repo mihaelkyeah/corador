@@ -27,6 +27,12 @@
                 </header>
             @endif
 
+            @if(isset($bannerImage))
+            <div id="banner">
+                <img id="bannerImage" src="{{ $bannerImage }}"></img>
+            </div>
+            @endif
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}

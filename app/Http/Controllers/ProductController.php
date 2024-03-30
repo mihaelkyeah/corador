@@ -10,4 +10,8 @@ class ProductController extends Controller
     function all() {
         Product::all();
     }
+
+    function search(Request $request) {
+
+    }
 }
