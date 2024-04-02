@@ -13,7 +13,10 @@ Route::get('/home', function () {
 Route::get('/products', function () {
     return view('products');
 })->name('products');
-
+Route::get('/product/{id}', function($id) {
+    $product = \App\Models\Product::find($id);
+    return view('product.product', ['product' => $product]);
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

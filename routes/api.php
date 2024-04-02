@@ -12,3 +12,4 @@ Route::get('/user', function (Request $request) {
 Route::get('/products', [ProductController::class, 'all']);
 Route::post('/products/search', [ProductController::class, 'search']);
 Route::get('/brands', [BrandController::class, 'all']);
+Route::get('/product/{product}/comments', [ProductController::class, 'comments']);
