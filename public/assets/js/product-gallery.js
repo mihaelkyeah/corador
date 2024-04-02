@@ -10,12 +10,18 @@ async function showProductGallery() {
     .then((response) => response.json());
 
     await initializeBrands();
-    console.log(brands);
+    // console.log(brands);
 
-    products.forEach((product) => {
-        let brand = brands.find(brand => brand.id === product.brand_id);
-        let component = productComponent(brand.name, product.name, product.description);
-        // console.log(component);
-        document.querySelector('#products').innerHTML += component+"\r\n";
-    });
+    for(let i = 0; i < products.length; i++) {
+        let brand = brands.find(brand => brand.id === products[i].brand_id);
+        document.querySelector('#products').innerHTML += productComponent(brand.name, products[i].name, products[i].description)+"\r\n";
+    };
+}
+
+function productComponent(brand, name, description) {
+    return `<div>
+    <h3 class="product-brand">${brand}</h3>
+    <h4 class="product-name">${name}</h4>
+    <p class="product-description">${description}</p>
+</div>`;
 }
