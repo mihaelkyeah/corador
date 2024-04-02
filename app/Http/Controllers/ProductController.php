@@ -8,7 +8,7 @@ class ProductController extends Controller
 {
     //
     function all() {
-        Product::all();
+        return \App\Models\Product::all()->toArray();
     }
 
     function search(Request $request) {
