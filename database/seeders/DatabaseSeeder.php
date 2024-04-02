@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Brand;
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\Comment;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,14 +26,9 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
             'is_superadmin' => true
         ]);
-        Brand::insert([
-            [
-                'name' => 'Corador',
-                'description' => fake()->text(20),
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ]);
+
+        User::factory(9)->create();
+
         Category::factory()->count(36)->sequence(
             // Instrument types
             ['name' => 'Keyboards'], // 1
@@ -170,6 +166,22 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 8
             ],
         )->create();
-        Product::factory()->create();
+
+        Brand::factory()->count(10)->sequence(
+            ['name' => 'Corador'],
+            ['name' => 'YAHAHA'],
+            ['name' => 'CRASSIO'],
+            ['name' => 'Ronald'],
+            ['name' => 'Tibson'],
+            ['name' => 'Steimway'],
+            ['name' => 'Rickerbacher'],
+            ['name' => 'Pender'],
+            ['name' => 'MISSA'],
+            ['name' => 'KAWAY']
+        )->create();
+
+        Product::factory(10)->create();
+
+        Comment::factory(20)->create();
     }
 }
